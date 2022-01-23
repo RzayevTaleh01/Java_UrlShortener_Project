@@ -91,6 +91,9 @@ You will be redirected to the URL of the code.
     "code": "GIT"
 }
 ```
+## Redirect test
+
+https://java-url-shortener.herokuapp.com/ZQ5IL
 
 ## Installation
 
