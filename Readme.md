@@ -9,7 +9,9 @@ This is a simple url shortener project which is using in-memory db.
 - H2 Database
 - Deploying to Heroku
 
+## View Herouku App
 
+https://java-url-shortener.herokuapp.com/
 
 - #### Get all urls
 
