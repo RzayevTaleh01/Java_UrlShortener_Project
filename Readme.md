@@ -94,6 +94,6 @@ You will be redirected to the URL of the code.
 
 
 ```bash
-   git clone https://github.com/RzayevTaleh01/UrlShortener.git
+   git clone https://github.com/RzayevTaleh01/Java_UrlShortener_Project.git
 ```
     
