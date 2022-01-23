@@ -9,7 +9,9 @@ This is a simple url shortener project which is using in-memory db.
 - H2 Database
 - Deploying to Heroku
 
+## View Herouku App
 
+https://java-url-shortener.herokuapp.com/
 
 - #### Get all urls
 
@@ -89,11 +91,14 @@ You will be redirected to the URL of the code.
     "code": "GIT"
 }
 ```
+## Redirect test
+
+https://java-url-shortener.herokuapp.com/ZQ5IL
 
 ## Installation
 
 
 ```bash
-   git clone https://github.com/RzayevTaleh01/UrlShortener.git
+   git clone https://github.com/RzayevTaleh01/Java_UrlShortener_Project.git
 ```
     
