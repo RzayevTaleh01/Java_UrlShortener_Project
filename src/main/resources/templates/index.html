@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="margin: 200px;">
+
+<div class="row g-3" style="margin: 25px;">
+    <div class="col-auto">
+        <input type="text" class="form-control" id="searchText" placeholder="code">
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary mb-3" onclick="search()">Open url</button>
+    </div>
+</div>
+
+<div class="row g-3" style="margin: 25px;">
+    <div class="col-md-8">
+        <label class="visually-hidden">Password</label>
+        <input type="text" class="form-control" id="url" placeholder="url">
+    </div>
+    <div class="col-md-2">
+        <label class="visually-hidden">Password</label>
+        <input type="text" class="form-control" id="code" placeholder="code">
+    </div>
+    <div class="col-md-2">
+        <button type="button" onClick="createCode()" class="btn btn-primary">Create</button>
+    </div>
+    <p style="white-space: pre-line;" id="codeResponse"></p>
+</div>
+
+
+<div style="margin: 25px;">
+    <div class="list-group">
+        <a href="#" onclick="get()" class="list-group-item list-group-item-action active" aria-current="true">
+            List All
+        </a>
+        <div style="white-space: pre-line;" id="demo"></div>
+    </div>
+</div>
+
+
+<script>
+
+
+    async function createCode() {
+
+        const realUrl = document.getElementById("url").value;
+        const code = document.getElementById("code").value;
+
+        await fetch('', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({"url": realUrl, "code": code})
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error(response.status);
+                }
+            })
+            .then(function (json) {
+
+                if (json["code"] != undefined) {
+                    document.getElementById("codeResponse").innerHTML = "code: " + json["code"];
+                    console.log(json["code"] + " " + json["url"]);
+                }
+                get();
+
+            }).catch((e) => {
+                document.getElementById("codeResponse").innerHTML = e;
+            });
+
+
+    }
+
+    async function get() {
+        document.getElementById(
+            'url').value = ''
+        document.getElementById(
+            'code').value = ''
+
+        fetch("/all", {
+            method: 'GET',
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                let txt = "";
+                for (let x in json) {
+                    txt += `<a href="${json[x]["url"]}" target='_blank' class="list-group-item list-group-item-action">${json[x]["code"]} - ${json[x]["url"]}</a>`
+                }
+                ;
+                console.log(txt);
+
+                document.getElementById("demo").innerHTML = txt;
+
+            });
+
+
+    }
+
+    async function search() {
+        let code = document.getElementById("searchText").value;
+        fetch("/show/" + code, {
+            method: 'GET',
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                const url = json["url"];
+                console.log(url);
+                if (url != undefined && url != null && url != "") {
+                    window.open(url, '_blank');
+                }
+            });
+
+    }
+
+
+</script>
+</body>
+
+</html>
