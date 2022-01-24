@@ -13,6 +13,11 @@ This is a simple url shortener project which is using in-memory db.
 
 https://java-url-shortener.herokuapp.com/
 
+## Project Images
+
+![image](https://user-images.githubusercontent.com/70813725/150777195-aff1fbb0-cafa-433f-8958-74494496f99c.png)
+
+
 - #### Get all urls
 
 ```http
