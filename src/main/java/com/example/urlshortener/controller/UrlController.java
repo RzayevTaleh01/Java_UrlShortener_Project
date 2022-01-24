@@ -48,19 +48,16 @@ public class UrlController {
         );
     }
 
+
     @GetMapping("/{code}")
     public ResponseEntity<ShortUrlDto> redirect(@Valid @NotEmpty @PathVariable String code) throws URISyntaxException {
-
         ShortUrl shortUrl = service.getUrlByCode(code);
         URI uri = new URI(shortUrl.getUrl());
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setLocation(uri);
-
-        return new ResponseEntity<>(
-                httpHeaders,HttpStatus.SEE_OTHER
-        );
-
+        return ResponseEntity.status(HttpStatus.SEE_OTHER).headers(httpHeaders).build();
     }
+
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody ShotUrlRequest shotUrlRequest) {
         ShortUrl shortUrl = shortUrlRequestConverter.convertToEntity(shotUrlRequest);

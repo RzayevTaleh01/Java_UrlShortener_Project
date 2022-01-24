@@ -4,9 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
 @RestController
 @RequestMapping
-public class ModelViewController {
+public class ModelAndViewController {
+
     @GetMapping
     public ModelAndView home()
     {
@@ -14,4 +16,5 @@ public class ModelViewController {
         modelAndView.setViewName("index.html");
         return modelAndView;
     }
+
 }
