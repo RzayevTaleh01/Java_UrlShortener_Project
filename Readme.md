@@ -17,6 +17,9 @@ https://java-url-shortener.herokuapp.com/
 
 ![image](https://user-images.githubusercontent.com/70813725/150777195-aff1fbb0-cafa-433f-8958-74494496f99c.png)
 
+## Redirect test
+
+https://java-url-shortener.herokuapp.com/ZQ5IL
 
 - #### Get all urls
 
@@ -96,9 +99,6 @@ You will be redirected to the URL of the code.
     "code": "GIT"
 }
 ```
-## Redirect test
-
-https://java-url-shortener.herokuapp.com/ZQ5IL
 
 ## Installation
 
